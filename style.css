@@ -1,0 +1,165 @@
+/* Genel Stil */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* Arka Plan */
+.background {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #ffe4e4; /* Arka plan rengi */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hareketli Güller */
+.roses {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.rose {
+    position: absolute;
+    top: -50px; /* Güller ekranın üstünden başlar */
+    width: 30px; /* Gül boyutu */
+    height: 30px;
+    background: url('1rose.png') no-repeat center center;
+    background-size: contain;
+    animation: fall linear infinite;
+}
+
+/* Güllerin düşüş animasyonu */
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(340deg);
+        opacity: 2;
+    }
+}
+
+
+/* Metin Kutusu */
+.text-box {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Gül Çerçevesi */
+.rose-frame {
+    position: relative;
+    display: inline-block;
+}
+
+.frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.frame-top {
+    position: absolute;
+    top: -30px; /* Üst kenarın dışına taşırma */
+    right: -30px;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Çerçeve yüksekliği */
+    background: url('1rose.png') repeat-x;
+    background-size: 30px 30px; /* Gül boyutları */
+}
+
+.frame-right {
+    position: absolute;
+    top: -26px;
+    right: -55px;
+    width: 50px;
+    height: 120%;
+    background: url('1rose.png') repeat-y;
+    background-size: 30px 30px;
+    
+}
+
+/* Alt Kenar */
+.frame-bottom {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url('1rose.png') repeat-x;
+    background-size: 30px 30px;
+}
+
+/* Sol Kenar */
+.frame-left {
+    position: absolute;
+    left: -35px;
+    width: 80px;
+    height: 125%;
+    bottom: -25px;
+    background: url('1rose.png') repeat-y;
+    background-size: 30px 30px;
+}
+
+
+/* Metin Stil */
+.rose-frame h1 {
+    color: transparent; /* Metin rengini gizle */
+    font-size: 2.5rem; /* Daha büyük boyut */
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 400; /* Daha ince bir yazı */
+    font-family: 'Pacifico', cursive; /* El yazısı stilinde yazı tipi */
+    text-align: center; /* Metni ortala */
+    letter-spacing: 1px; /* Harfler arası biraz boşluk */
+    text-transform: none; /* Harfleri orijinal boyutta bırak */
+    background: linear-gradient(to right, #cb1111, #fc5025); /* Yumuşak mavi-mor geçiş */
+    -webkit-background-clip: text; /* Arka planı metne uygula */
+    background-clip: text; /* Tarayıcı uyumluluğu */
+    text-shadow: 2px 2px 5px #ff79c6, 4px 4px 10px #bd93f9;
+    animation: subtle-glow 6s infinite alternate; /* Daha sakin ışık animasyonu */
+}
+
+/* Yumuşak Işık Efekti Animasyonu */
+@keyframes subtle-glow {
+    0% {
+        text-shadow: 2px 2px 5px rgba(203, 17, 17, 0.4),
+                     2px 2px 10px rgba(37, 117, 252, 0.3);
+    }
+    100% {
+        text-shadow: 2px 2px 10px rgba(106, 17, 203, 0.6),
+                     2px 2px 15px rgba(252, 37, 37, 0.5);
+    }
+}
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem; /* Mobilde daha küçük yazı boyutu */
+        letter-spacing: 1px; /* Daha az harf aralığı */
+        
+    }
+
+    .rose {
+        width: 20px; /* Daha küçük güller */
+        height: 20px;
+    }
+}
